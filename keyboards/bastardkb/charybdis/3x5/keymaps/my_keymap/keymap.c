@@ -20,6 +20,23 @@
 #    include "timer.h"
 #endif // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 
+typedef struct TapHolds {
+  char      tap_char;
+  uint16_t  hold_code;
+} TapHold;
+
+TapHold tapholds[] = {
+  { .tap_char = 'KC_LCBR' .hold_code = KC_LALT },
+  { .tap_char = 'KC_LBRC' .hold_code = KC_LCTL },
+};
+
+enum CustomKeycodes {
+  KC_L1 = SAFE_RANGE,
+  KC_L2,
+  KC_LAST,
+};
+
+
 enum charybdis_keymap_layers {
     LAYER_BASE = 0,
     LAYER_NUMBERS,
@@ -255,3 +272,23 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 // rgb_matrix.c.
 void rgb_matrix_update_pwm_buffers(void);
 #endif
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    static uint16_t timer;
+
+    if (SAFE_RANGE <= keycode && keycode < KC_LAST) {
+        TapHold taphold = tapholds[keycode - SAFE_RANGE];
+
+        if (record->event.pressed) {
+            timer = timer_read();
+            register_code(taphold.hold_code);
+        } else {
+            unregister_code(taphold.hold_code);
+            if (timer_elapsed(timer) < TAPPING_TERM) {
+                send_char(taphold.tap_char);
+            }
+        }
+        return false;
+    }
+    return true;
+}
