@@ -26,8 +26,8 @@ typedef struct TapHolds {
 } TapHold;
 
 TapHold tapholds[] = {
-  { .tap_char = 'KC_LCBR', .hold_code = KC_LALT },
-  { .tap_char = 'KC_LBRC', .hold_code = KC_LCTL },
+  { .tap_char = '{', .hold_code = KC_LALT },
+  { .tap_char = '[', .hold_code = KC_LCTL },
 };
 
 enum CustomKeycodes {
