@@ -82,7 +82,7 @@ static uint16_t auto_pointer_layer_timer = 0;
        KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_QUOT, \
        KC_A,    MT(MOD_LALT, KC_R),    MT(MOD_LCTL, KC_S),    MT(MOD_LGUI, KC_T),    KC_D,    KC_H,    MT(MOD_RGUI, KC_N),    MT(MOD_RCTL, KC_E),    MT(MOD_RALT, KC_I), KC_O, \
        KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, \
-                      TAB_FUN, BSP_NUM, ESC_MED, ENT_SYM, SPC_NAV
+                      TAB_FUN, MT(MOD_LSFT, KC_BSPC), ESC_MED, ENT_SYM, MT(MOD_LSFT, KC_SPC)
 
 /** Convenience row shorthands. */
 #define _______________DEAD_HALF_ROW_______________ XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
