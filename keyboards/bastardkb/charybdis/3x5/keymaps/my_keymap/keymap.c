@@ -26,12 +26,18 @@ typedef struct TapHolds {
 } TapHold;
 
 TapHold tapholds[] = {
-  { .tap_char = '{', .hold_code = KC_LALT },
-  { .tap_char = '[', .hold_code = KC_LCTL },
-  { .tap_char = '(', .hold_code = KC_LGUI },
-  { .tap_char = ')', .hold_code = KC_RGUI },
-  { .tap_char = ']', .hold_code = KC_RCTL },
-  { .tap_char = '}', .hold_code = KC_RALT },
+  { .tap_code = KC_LCBR, .hold_code = KC_LALT },
+  { .tap_code = KC_LBRC, .hold_code = KC_LCTL },
+  { .tap_code = KC_LPRN, .hold_code = KC_LGUI },
+  { .tap_code = KC_RCBR, .hold_code = KC_RGUI },
+  { .tap_code = KC_RBRC, .hold_code = KC_RCTL },
+  { .tap_code = KC_RPRN, .hold_code = KC_RALT },
+  { .tap_code = KC_GRV, .hold_code = KC_LALT },
+  { .tap_code = KC_QUOT, .hold_code = KC_LCTL },
+  { .tap_code = KC_NUBS, .hold_code = KC_LGUI },
+  { .tap_code = KC_BSLS, .hold_code = KC_RGUI },
+  { .tap_code = KC_AT, .hold_code = KC_RCTL },
+  { .tap_code = LSFT(KC_GRV), .hold_code = KC_RALT },
 };
 
 enum CustomKeycodes {
@@ -41,6 +47,12 @@ enum CustomKeycodes {
   KC_L4,
   KC_L5,
   KC_L6,
+  KC_L11,
+  KC_L12,
+  KC_L13,
+  KC_L14,
+  KC_L15,
+  KC_L16,
   KC_LAST,
 };
 
@@ -87,7 +99,7 @@ static uint16_t auto_pointer_layer_timer = 0;
 // clang-format off
 /** \brief QWERTY layout (3 rows, 10 columns). */
 #define LAYOUT_LAYER_BASE                                                                     \
-       KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_QUOT, \
+       KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, \
        KC_A,    MT(MOD_LALT, KC_R),    MT(MOD_LCTL, KC_S),    MT(MOD_LGUI, KC_T),    KC_D,    KC_H,    MT(MOD_RGUI, KC_N),    MT(MOD_RCTL, KC_E),    MT(MOD_RALT, KC_I), KC_O, \
        KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, \
                       TAB_FUN, MT(MOD_LSFT, KC_BSPC), ESC_MED, ENT_SYM, MT(MOD_LSFT, KC_SPC)
@@ -119,7 +131,7 @@ static uint16_t auto_pointer_layer_timer = 0;
        KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0, \
        KC_MINUS,    KC_L1,    KC_L2,    KC_L3,    KC_EQUAL,    KC_PLUS,    KC_L4,    KC_L5,    KC_L6, KC_UNDS, \
        KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, \
-                      TAB_FUN, BSP_NUM, ESC_MED, ENT_SYM, SPC_NAV
+                      TAB_FUN, MT(MOD_LSFT, KC_BSPC), ESC_MED, ENT_SYM, MT(MOD_LSFT, KC_SPC)
 /**
  * \brief Symbols layer.
  *
@@ -128,10 +140,11 @@ static uint16_t auto_pointer_layer_timer = 0;
  * `KC_RPRN`.
  */
 #define LAYOUT_LAYER_SYMBOLS                                                                  \
-    KC_LCBR, KC_AMPR, KC_ASTR, KC_LPRN, KC_RCBR, _______________DEAD_HALF_ROW_______________, \
+    LSFT(KC_1), LSFT(KC_2), LSFT(KC_3), LSFT(KC_4), LSFT(KC_5), LSFT(KC_6), LSFT(KC_7), LSFT(KC_8), LSFT(KC_9), LSFT(KC_0), \
+    KC_MINUS, KC_L11, KC_L12, KC_L13, KC_NUHS, KC_TILD, KC_L14, KC_L15, KC_L16, KC_UNDS, \
     KC_COLN,  KC_DLR, KC_PERC, KC_CIRC, KC_PLUS, ______________HOME_ROW_GACS_R______________, \
     KC_TILD, KC_EXLM,   KC_AT, KC_HASH, KC_PIPE, _______________DEAD_HALF_ROW_______________, \
-                      KC_LPRN, KC_RPRN, KC_UNDS, _______, XXXXXXX
+                      TAB_FUN, MT(MOD_LSFT, KC_BSPC), ESC_MED, ENT_SYM, MT(MOD_LSFT, KC_SPC)
 
 /**
  * \brief Media layer.
@@ -305,7 +318,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         } else {
             unregister_code(taphold.hold_code);
             if (timer_elapsed(timer) < TAPPING_TERM) {
-                send_char(taphold.tap_char);
+                tap_code(taphold.tap_code);
+                //send_char(taphold.tap_char);
             }
         }
         return false;
