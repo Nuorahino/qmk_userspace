@@ -28,11 +28,19 @@ typedef struct TapHolds {
 TapHold tapholds[] = {
   { .tap_char = '{', .hold_code = KC_LALT },
   { .tap_char = '[', .hold_code = KC_LCTL },
+  { .tap_char = '(', .hold_code = KC_LGUI },
+  { .tap_char = ')', .hold_code = KC_RGUI },
+  { .tap_char = ']', .hold_code = KC_RCTL },
+  { .tap_char = '}', .hold_code = KC_RALT },
 };
 
 enum CustomKeycodes {
   KC_L1 = SAFE_RANGE,
   KC_L2,
+  KC_L3,
+  KC_L4,
+  KC_L5,
+  KC_L6,
   KC_LAST,
 };
 
@@ -62,10 +70,10 @@ static uint16_t auto_pointer_layer_timer = 0;
 #    endif // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD
 #endif     // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 
-#define ESC_MED LT(LAYER_MEDIA, KC_ESC)
+#define ESC_MED LT(LAYER_SYMBOLS, KC_ESC)
 #define SPC_NAV LT(LAYER_NAVIGATION, KC_SPC)
-#define TAB_FUN LT(LAYER_NUMBERS, KC_TAB)
-#define ENT_SYM LT(LAYER_SYMBOLS, KC_ENT)
+#define TAB_FUN LT(LAYER_MEDIA, KC_TAB)
+#define ENT_SYM LT(LAYER_NUMBERS, KC_ENT)
 #define BSP_NUM LT(LAYER_NUMERAL, KC_BSPC)
 #define _L_PTR(KC) LT(LAYER_POINTER, KC)
 
@@ -109,9 +117,21 @@ static uint16_t auto_pointer_layer_timer = 0;
  */
 #define LAYOUT_LAYER_NUMBERS                                                                    \
        KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0, \
-       KC_MINUS,    KC_LCBR,    KC_LBRC,    KC_LPRN,    KC_EQUAL,    KC_PLUS,    KC_RPRN,    KC_RBRC,    KC_RCBR, KC_UNDS, \
+       KC_MINUS,    KC_L1,    KC_L2,    KC_L3,    KC_EQUAL,    KC_PLUS,    KC_L4,    KC_L5,    KC_L6, KC_UNDS, \
        KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, \
                       TAB_FUN, BSP_NUM, ESC_MED, ENT_SYM, SPC_NAV
+/**
+ * \brief Symbols layer.
+ *
+ * Secondary left-hand layer has shifted symbols in the same locations to reduce
+ * chording when using mods with shifted symbols. `KC_LPRN` is duplicated next to
+ * `KC_RPRN`.
+ */
+#define LAYOUT_LAYER_SYMBOLS                                                                  \
+    KC_LCBR, KC_AMPR, KC_ASTR, KC_LPRN, KC_RCBR, _______________DEAD_HALF_ROW_______________, \
+    KC_COLN,  KC_DLR, KC_PERC, KC_CIRC, KC_PLUS, ______________HOME_ROW_GACS_R______________, \
+    KC_TILD, KC_EXLM,   KC_AT, KC_HASH, KC_PIPE, _______________DEAD_HALF_ROW_______________, \
+                      KC_LPRN, KC_RPRN, KC_UNDS, _______, XXXXXXX
 
 /**
  * \brief Media layer.
