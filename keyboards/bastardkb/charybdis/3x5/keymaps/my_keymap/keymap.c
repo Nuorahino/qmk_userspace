@@ -142,7 +142,6 @@ static uint16_t auto_pointer_layer_timer = 0;
 #define LAYOUT_LAYER_SYMBOLS                                                                  \
     LSFT(KC_1), LSFT(KC_2), LSFT(KC_3), LSFT(KC_4), LSFT(KC_5), LSFT(KC_6), LSFT(KC_7), LSFT(KC_8), LSFT(KC_9), LSFT(KC_0), \
     KC_MINUS, KC_L11, KC_L12, KC_L13, KC_NUHS, KC_TILD, KC_L14, KC_L15, KC_L16, KC_UNDS, \
-    KC_COLN,  KC_DLR, KC_PERC, KC_CIRC, KC_PLUS, ______________HOME_ROW_GACS_R______________, \
     KC_TILD, KC_EXLM,   KC_AT, KC_HASH, KC_PIPE, _______________DEAD_HALF_ROW_______________, \
                       TAB_FUN, MT(MOD_LSFT, KC_BSPC), ESC_MED, ENT_SYM, MT(MOD_LSFT, KC_SPC)
 
