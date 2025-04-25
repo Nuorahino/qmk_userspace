@@ -21,7 +21,7 @@
 #endif // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 
 typedef struct TapHolds {
-  char      tap_char;
+  uint16_t  tap_code;
   uint16_t  hold_code;
 } TapHold;
 
