@@ -1,3 +1,5 @@
+// TODO Settings and MEDIA layer
+
 /**
  * Copyright 2021 Charly Delay <charly@codesink.dev> (@0xcharly)
  *
@@ -60,10 +62,10 @@ enum CustomKeycodes {
 enum charybdis_keymap_layers {
     LAYER_BASE = 0,
     LAYER_NUMBERS,
-    LAYER_NAVIGATION,
+    LAYER_SETTINGS,
+    LAYER_MOUSE,
     LAYER_MEDIA,
     LAYER_POINTER,
-    LAYER_NUMERAL,
     LAYER_SYMBOLS,
 };
 
@@ -83,10 +85,10 @@ static uint16_t auto_pointer_layer_timer = 0;
 #endif     // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 
 #define ESC_MED LT(LAYER_SYMBOLS, KC_ESC)
-#define SPC_NAV LT(LAYER_NAVIGATION, KC_SPC)
+#define SPC_NAV LT(LAYER_SETTINGS, KC_SPC)
 #define TAB_FUN LT(LAYER_MEDIA, KC_TAB)
 #define ENT_SYM LT(LAYER_NUMBERS, KC_ENT)
-#define BSP_NUM LT(LAYER_NUMERAL, KC_BSPC)
+#define BSP_NUM LT(LAYER_MOUSE, KC_BSPC)
 #define _L_PTR(KC) LT(LAYER_POINTER, KC)
 
 #ifndef POINTING_DEVICE_ENABLE
@@ -100,9 +102,53 @@ static uint16_t auto_pointer_layer_timer = 0;
 /** \brief QWERTY layout (3 rows, 10 columns). */
 #define LAYOUT_LAYER_BASE                                                                     \
        KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, \
-       KC_A,    MT(MOD_LALT, KC_R),    MT(MOD_LCTL, KC_S),    MT(MOD_LGUI, KC_T),    KC_D,    KC_H,    MT(MOD_RGUI, KC_N),    MT(MOD_RCTL, KC_E),    MT(MOD_RALT, KC_I), KC_O, \
+       LT(LAYER_MOUSE, KC_A),    MT(MOD_LALT, KC_R),    MT(MOD_LCTL, KC_S),    MT(MOD_LGUI, KC_T),    KC_D,    KC_H,    MT(MOD_RGUI, KC_N),    MT(MOD_RCTL, KC_E),    MT(MOD_RALT, KC_I), LT(LAYER_MOUSE,  KC_O), \
        KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, \
                       TAB_FUN, MT(MOD_LSFT, KC_BSPC), ESC_MED, ENT_SYM, MT(MOD_LSFT, KC_SPC)
+
+/**
+ * \brief Function layer.
+ *
+ * Secondary right-hand layer has function keys mirroring the numerals on the
+ * primary layer with extras on the pinkie column, plus system keys on the inner
+ * column. App is on the tertiary thumb key and other thumb keys are duplicated
+ * from the base layer to enable auto-repeat.
+ */
+#define LAYOUT_LAYER_NUMBERS                                                                    \
+       KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0, \
+       KC_MINUS,    KC_L1,    KC_L2,    KC_L3,    KC_EQUAL,    KC_PLUS,    KC_L4,    KC_L5,    KC_L6, KC_UNDS, \
+        KC_NO, KC_NO, KC_COPY, KC_PASTE, KC_NO, KC_NO, KC_NO, KC_NO,   KC_NO, KC_PSCR, \
+                  TAB_FUN, MT(MOD_LSFT, KC_BSPC), ESC_MED, ENT_SYM, MT(MOD_LSFT, KC_SPC)
+// TODO: Check if there is more stuff, that should be inserted into the bottom row
+
+/**
+ * \brief Symbols layer.
+ *
+ * Secondary left-hand layer has shifted symbols in the same locations to reduce
+ * chording when using mods with shifted symbols. `KC_LPRN` is duplicated next to
+ * `KC_RPRN`.
+ */
+#define LAYOUT_LAYER_SYMBOLS                                                                  \
+    LSFT(KC_1), LSFT(KC_2), LSFT(KC_3), LSFT(KC_4), LSFT(KC_5), LSFT(KC_6), LSFT(KC_7), LSFT(KC_8), LSFT(KC_9), LSFT(KC_0), \
+    KC_MINUS, KC_L11, KC_L12, KC_L13, KC_NUHS, KC_TILD, KC_L14, KC_L15, KC_L16, KC_UNDS, \
+       KC_HOME,    KC_PGDN,    KC_PGUP,    KC_END,    KC_DELETE,    KC_INSERT,    KC_LEFT, KC_DOWN,  KC_UP, KC_RIGHT, \
+              TAB_FUN, MT(MOD_LSFT, KC_BSPC), ESC_MED, ENT_SYM, MT(MOD_LSFT, KC_SPC)
+
+
+/**
+ * \brief Mouse layout
+ */
+#define LAYOUT_LAYER_MOUSE                                                                    \
+   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10, \
+    KC_NO,    MS_RGHT,    MS_BTN3,    MS_LEFT,  KC_NO, KC_NO,    MS_RGHT,    MS_BTN3,    MS_LEFT,  KC_NO, \
+   KC_F11,    KC_F12,    KC_F13,    KC_F14,    KC_F15,    KC_NO,    DPI_MOD,    DPI_RMOD,    S_D_MOD,    S_D_RMOD, \
+                       DRGSCRL,    MOD_LSFT, SNIPING, MO(LAYER_MEDIA), MO(LAYER_SETTINGS)
+//TODO: Thumb keys should be mod keys or such
+
+
+
+// Until here most of the things are updated.
+
 
 /** Convenience row shorthands. */
 #define _______________DEAD_HALF_ROW_______________ XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
@@ -118,33 +164,6 @@ static uint16_t auto_pointer_layer_timer = 0;
  *
  * See https://github.com/manna-harbour/miryoku for the original layout.
  */
-
-/**
- * \brief Function layer.
- *
- * Secondary right-hand layer has function keys mirroring the numerals on the
- * primary layer with extras on the pinkie column, plus system keys on the inner
- * column. App is on the tertiary thumb key and other thumb keys are duplicated
- * from the base layer to enable auto-repeat.
- */
-#define LAYOUT_LAYER_NUMBERS                                                                    \
-       KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0, \
-       KC_MINUS,    KC_L1,    KC_L2,    KC_L3,    KC_EQUAL,    KC_PLUS,    KC_L4,    KC_L5,    KC_L6, KC_UNDS, \
-       KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, \
-                      TAB_FUN, MT(MOD_LSFT, KC_BSPC), ESC_MED, ENT_SYM, MT(MOD_LSFT, KC_SPC)
-/**
- * \brief Symbols layer.
- *
- * Secondary left-hand layer has shifted symbols in the same locations to reduce
- * chording when using mods with shifted symbols. `KC_LPRN` is duplicated next to
- * `KC_RPRN`.
- */
-#define LAYOUT_LAYER_SYMBOLS                                                                  \
-    LSFT(KC_1), LSFT(KC_2), LSFT(KC_3), LSFT(KC_4), LSFT(KC_5), LSFT(KC_6), LSFT(KC_7), LSFT(KC_8), LSFT(KC_9), LSFT(KC_0), \
-    KC_MINUS, KC_L11, KC_L12, KC_L13, KC_NUHS, KC_TILD, KC_L14, KC_L15, KC_L16, KC_UNDS, \
-    KC_TILD, KC_EXLM,   KC_AT, KC_HASH, KC_PIPE, _______________DEAD_HALF_ROW_______________, \
-                      TAB_FUN, MT(MOD_LSFT, KC_BSPC), ESC_MED, ENT_SYM, MT(MOD_LSFT, KC_SPC)
-
 /**
  * \brief Media layer.
  *
@@ -155,7 +174,9 @@ static uint16_t auto_pointer_layer_timer = 0;
     XXXXXXX,RGB_RMOD, RGB_TOG, RGB_MOD, XXXXXXX, XXXXXXX,RGB_RMOD, RGB_TOG, RGB_MOD, XXXXXXX, \
     KC_MPRV, KC_VOLD, KC_MUTE, KC_VOLU, KC_MNXT, KC_MPRV, KC_VOLD, KC_MUTE, KC_VOLU, KC_MNXT, \
     XXXXXXX, XXXXXXX, XXXXXXX,  EE_CLR, QK_BOOT, QK_BOOT,  EE_CLR, XXXXXXX, XXXXXXX, XXXXXXX, \
-                      _______, KC_MPLY, KC_MSTP, KC_MSTP, KC_MPLY
+                      _______, KC_MPLY, KC_MSTP, KC_TRNS, KC_TRNS
+//
+//                      _______, KC_MPLY, KC_MSTP, KC_MSTP, KC_MPLY
 
 /** \brief Mouse emulation and pointer functions. */
 #define LAYOUT_LAYER_POINTER                                                                  \
@@ -172,25 +193,11 @@ static uint16_t auto_pointer_layer_timer = 0;
  * caps lock and insert on the inner column. Thumb keys are duplicated from the
  * base layer to avoid having to layer change mid edit and to enable auto-repeat.
  */
-#define LAYOUT_LAYER_NAVIGATION                                                               \
+#define LAYOUT_LAYER_SETTINGS                                                               \
     _______________DEAD_HALF_ROW_______________, _______________DEAD_HALF_ROW_______________, \
     ______________HOME_ROW_GACS_L______________, KC_CAPS, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, \
-    _______________DEAD_HALF_ROW_______________,  KC_INS, KC_HOME, KC_PGDN, KC_PGUP,  KC_END, \
-                      XXXXXXX, _______, XXXXXXX,  KC_ENT, KC_BSPC
-
-/**
- * \brief Numeral layout.
- *
- * Primary left-hand layer (right home thumb) is numerals and symbols. Numerals
- * are in the standard numpad locations with symbols in the remaining positions.
- * `KC_DOT` is duplicated from the base layer.
- */
-#define LAYOUT_LAYER_NUMERAL                                                                  \
-    KC_LBRC,    KC_7,    KC_8,    KC_9, KC_RBRC, _______________DEAD_HALF_ROW_______________, \
-    KC_SCLN,    KC_4,    KC_5,    KC_6,  KC_EQL, ______________HOME_ROW_GACS_R______________, \
-     KC_GRV,    KC_1,    KC_2,    KC_3, KC_BSLS, _______________DEAD_HALF_ROW_______________, \
-                       KC_DOT,    KC_0, KC_MINS, XXXXXXX, _______
-
+    _______________DEAD_HALF_ROW_______________,  _______________DEAD_HALF_ROW_______________, \
+                      XXXXXXX, _______, XXXXXXX,  KC_TRNS, KC_TRNS
 
 /**
  * \brief Add Home Row mod to a layout.
@@ -244,9 +251,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     POINTER_MOD(HOME_ROW_MOD_GACS(LAYOUT_LAYER_BASE))
   ),
   [LAYER_NUMBERS] = LAYOUT_wrapper(LAYOUT_LAYER_NUMBERS),
-  [LAYER_NAVIGATION] = LAYOUT_wrapper(LAYOUT_LAYER_NAVIGATION),
+  [LAYER_SETTINGS] = LAYOUT_wrapper(LAYOUT_LAYER_SETTINGS),
   [LAYER_MEDIA] = LAYOUT_wrapper(LAYOUT_LAYER_MEDIA),
-  [LAYER_NUMERAL] = LAYOUT_wrapper(LAYOUT_LAYER_NUMERAL),
+  [LAYER_MOUSE] = LAYOUT_wrapper(LAYOUT_LAYER_MOUSE),
   [LAYER_POINTER] = LAYOUT_wrapper(LAYOUT_LAYER_POINTER),
   [LAYER_SYMBOLS] = LAYOUT_wrapper(LAYOUT_LAYER_SYMBOLS),
 };
