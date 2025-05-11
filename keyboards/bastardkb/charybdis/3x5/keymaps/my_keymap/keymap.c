@@ -38,7 +38,7 @@ TapHold tapholds[] = {
   { .tap_code = KC_QUOT, .hold_code = KC_LCTL },
   { .tap_code = KC_NUBS, .hold_code = KC_LGUI },
   { .tap_code = LSFT(KC_NUBS), .hold_code = KC_RGUI },
-  { .tap_code = KC_AT, .hold_code = KC_RCTL },
+  { .tap_code = LSFT(KC_QUOT), .hold_code = KC_RCTL },
   { .tap_code = LSFT(KC_GRV), .hold_code = KC_RALT },
 };
 
