@@ -31,9 +31,9 @@ TapHold tapholds[] = {
   { .tap_code = KC_LCBR, .hold_code = KC_LALT },
   { .tap_code = KC_LBRC, .hold_code = KC_LCTL },
   { .tap_code = KC_LPRN, .hold_code = KC_LGUI },
-  { .tap_code = KC_RCBR, .hold_code = KC_RGUI },
+  { .tap_code = KC_RPRN, .hold_code = KC_RGUI },
   { .tap_code = KC_RBRC, .hold_code = KC_RCTL },
-  { .tap_code = KC_RPRN, .hold_code = KC_RALT },
+  { .tap_code = KC_RCBR, .hold_code = KC_RALT },
   { .tap_code = KC_GRV, .hold_code = KC_LALT },
   { .tap_code = KC_QUOT, .hold_code = KC_LCTL },
   { .tap_code = KC_NUBS, .hold_code = KC_LGUI },
@@ -62,15 +62,12 @@ enum CustomKeycodes {
 enum charybdis_keymap_layers {
     LAYER_BASE = 0,
     LAYER_NUMBERS,
-    LAYER_SETTINGS,
-    LAYER_MOUSE,
-    LAYER_MEDIA,
-    LAYER_POINTER,
     LAYER_SYMBOLS,
+    LAYER_MOUSE,
+    LAYER_SETTINGS,
+    LAYER_MEDIA,
 };
 
-// Automatically enable sniping-mode on the pointer layer.
-#define CHARYBDIS_AUTO_SNIPING_ON_LAYER LAYER_POINTER
 
 #ifdef CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 static uint16_t auto_pointer_layer_timer = 0;
@@ -84,12 +81,13 @@ static uint16_t auto_pointer_layer_timer = 0;
 #    endif // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD
 #endif     // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 
-#define ESC_MED LT(LAYER_SYMBOLS, KC_ESC)
-#define SPC_NAV LT(LAYER_SETTINGS, KC_SPC)
+#define ESC_SYM LT(LAYER_SYMBOLS, KC_ESC)
 #define TAB_FUN LT(LAYER_MEDIA, KC_TAB)
-#define ENT_SYM LT(LAYER_NUMBERS, KC_ENT)
-#define BSP_NUM LT(LAYER_MOUSE, KC_BSPC)
-#define _L_PTR(KC) LT(LAYER_POINTER, KC)
+#define ENT_NUM LT(LAYER_NUMBERS, KC_ENT)
+#define BSP_SFT MT(MOD_LSFT, KC_BSPC)
+#define SPC_RSF MT(MOD_RSFT, KC_SPC)
+
+#define __________THUMB_ROW__________ TAB_FUN, BSP_SFT, ESC_SYM, ENT_NUM, SPC_RSF
 
 #ifndef POINTING_DEVICE_ENABLE
 #    define DRGSCRL KC_NO
@@ -102,9 +100,9 @@ static uint16_t auto_pointer_layer_timer = 0;
 /** \brief QWERTY layout (3 rows, 10 columns). */
 #define LAYOUT_LAYER_BASE                                                                     \
        KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, \
-       LT(LAYER_MOUSE, KC_A),    MT(MOD_LALT, KC_R),    MT(MOD_LCTL, KC_S),    MT(MOD_LGUI, KC_T),    KC_D,    KC_H,    MT(MOD_RGUI, KC_N),    MT(MOD_RCTL, KC_E),    MT(MOD_RALT, KC_I), LT(LAYER_MOUSE,  KC_O), \
+       KC_A,    KC_R,    KC_S,    KC_T,    KC_D,    KC_H,    KC_N,    KC_E,    KC_I, KC_O, \
        KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, \
-                      TAB_FUN, MT(MOD_LSFT, KC_BSPC), ESC_MED, ENT_SYM, MT(MOD_LSFT, KC_SPC)
+                                      __________THUMB_ROW__________
 
 /**
  * \brief Function layer.
@@ -118,7 +116,7 @@ static uint16_t auto_pointer_layer_timer = 0;
        KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0, \
        KC_MINUS,    KC_L1,    KC_L2,    KC_L3,    KC_EQUAL,    KC_PLUS,    KC_L4,    KC_L5,    KC_L6, KC_UNDS, \
         KC_NO, KC_NO, KC_COPY, KC_PASTE, KC_NO, KC_NO, KC_NO, KC_NO,   KC_NO, KC_PSCR, \
-                  TAB_FUN, MT(MOD_LSFT, KC_BSPC), ESC_MED, ENT_SYM, MT(MOD_LSFT, KC_SPC)
+                                      __________THUMB_ROW__________
 // TODO: Check if there is more stuff, that should be inserted into the bottom row
 
 /**
@@ -130,9 +128,9 @@ static uint16_t auto_pointer_layer_timer = 0;
  */
 #define LAYOUT_LAYER_SYMBOLS                                                                  \
     LSFT(KC_1), LSFT(KC_2), LSFT(KC_3), LSFT(KC_4), LSFT(KC_5), LSFT(KC_6), LSFT(KC_7), LSFT(KC_8), LSFT(KC_9), LSFT(KC_0), \
-    KC_MINUS, KC_L11, KC_L12, KC_L13, KC_NUHS, KC_TILD, KC_L14, KC_L15, KC_L16, KC_UNDS, \
+    KC_MINUS, KC_L11, KC_L12, KC_L13, KC_NUHS, SFT_T(KC_NUHS), KC_L14, KC_L15, KC_L16, KC_UNDS, \
        KC_HOME,    KC_PGDN,    KC_PGUP,    KC_END,    KC_DELETE,    KC_INSERT,    KC_LEFT, KC_DOWN,  KC_UP, KC_RIGHT, \
-              TAB_FUN, MT(MOD_LSFT, KC_BSPC), ESC_MED, ENT_SYM, MT(MOD_LSFT, KC_SPC)
+                                      __________THUMB_ROW__________
 
 
 /**
@@ -178,13 +176,6 @@ static uint16_t auto_pointer_layer_timer = 0;
 //
 //                      _______, KC_MPLY, KC_MSTP, KC_MSTP, KC_MPLY
 
-/** \brief Mouse emulation and pointer functions. */
-#define LAYOUT_LAYER_POINTER                                                                  \
-    QK_BOOT,  EE_CLR, XXXXXXX, DPI_MOD, S_D_MOD, S_D_MOD, DPI_MOD, XXXXXXX,  EE_CLR, QK_BOOT, \
-    ______________HOME_ROW_GACS_L______________, ______________HOME_ROW_GACS_R______________, \
-    _______, DRGSCRL, SNIPING, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, SNIPING, DRGSCRL, _______, \
-                      KC_BTN2, KC_BTN1, KC_BTN3, KC_BTN3, KC_BTN1
-
 /**
  * \brief Navigation layer.
  *
@@ -215,8 +206,8 @@ static uint16_t auto_pointer_layer_timer = 0;
     ...)                                                               \
              L00,         L01,         L02,         L03,         L04,  \
              R05,         R06,         R07,         R08,         R09,  \
-      LGUI_T(L10), LALT_T(L11), LCTL_T(L12), LSFT_T(L13),        L14,  \
-             R15,  RSFT_T(R16), RCTL_T(R17), LALT_T(R18), RGUI_T(R19), \
+      LT(LAYER_MOUSE, L10), LALT_T(L11), LCTL_T(L12), LGUI_T(L13),        L14,  \
+             R15,  RGUI_T(R16), RCTL_T(R17), RALT_T(R18), LT(LAYER_MOUSE, R19), \
       __VA_ARGS__
 #define HOME_ROW_MOD_GACS(...) _HOME_ROW_MOD_GACS(__VA_ARGS__)
 
@@ -248,14 +239,13 @@ static uint16_t auto_pointer_layer_timer = 0;
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_BASE] = LAYOUT_wrapper(
-    POINTER_MOD(HOME_ROW_MOD_GACS(LAYOUT_LAYER_BASE))
+    HOME_ROW_MOD_GACS(LAYOUT_LAYER_BASE)
   ),
   [LAYER_NUMBERS] = LAYOUT_wrapper(LAYOUT_LAYER_NUMBERS),
+  [LAYER_SYMBOLS] = LAYOUT_wrapper(LAYOUT_LAYER_SYMBOLS),
+  [LAYER_MOUSE] = LAYOUT_wrapper(LAYOUT_LAYER_MOUSE),
   [LAYER_SETTINGS] = LAYOUT_wrapper(LAYOUT_LAYER_SETTINGS),
   [LAYER_MEDIA] = LAYOUT_wrapper(LAYOUT_LAYER_MEDIA),
-  [LAYER_MOUSE] = LAYOUT_wrapper(LAYOUT_LAYER_MOUSE),
-  [LAYER_POINTER] = LAYOUT_wrapper(LAYOUT_LAYER_POINTER),
-  [LAYER_SYMBOLS] = LAYOUT_wrapper(LAYOUT_LAYER_SYMBOLS),
 };
 // clang-format on
 
@@ -264,7 +254,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
     if (abs(mouse_report.x) > CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD || abs(mouse_report.y) > CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD) {
         if (auto_pointer_layer_timer == 0) {
-            layer_on(LAYER_POINTER);
 #        ifdef RGB_MATRIX_ENABLE
             rgb_matrix_mode_noeeprom(RGB_MATRIX_NONE);
             rgb_matrix_sethsv_noeeprom(HSV_GREEN);
@@ -278,7 +267,6 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
 void matrix_scan_user(void) {
     if (auto_pointer_layer_timer != 0 && TIMER_DIFF_16(timer_read(), auto_pointer_layer_timer) >= CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_TIMEOUT_MS) {
         auto_pointer_layer_timer = 0;
-        layer_off(LAYER_POINTER);
 #        ifdef RGB_MATRIX_ENABLE
         rgb_matrix_mode_noeeprom(RGB_MATRIX_DEFAULT_MODE);
 #        endif // RGB_MATRIX_ENABLE
@@ -312,7 +300,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         } else {
             unregister_code(taphold.hold_code);
             if (timer_elapsed(timer) < TAPPING_TERM) {
-                tap_code(taphold.tap_code);
+                tap_code16(taphold.tap_code);
                 //send_char(taphold.tap_char);
             }
         }
