@@ -138,7 +138,7 @@ static uint16_t auto_pointer_layer_timer = 0;
  */
 #define LAYOUT_LAYER_MOUSE                                                                    \
    KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10, \
-    KC_NO,    MS_RGHT,    MS_BTN3,    MS_LEFT,  KC_NO, KC_NO,    MS_RGHT,    MS_BTN3,    MS_LEFT,  KC_NO, \
+    KC_NO,    KC_LALT,    KC_LCTL,    KC_LGUI,  KC_NO, KC_NO,    MS_BTN1,    MS_BTN3,    MS_BTN2,  KC_NO, \
    KC_F11,    KC_F12,    KC_F13,    KC_F14,    KC_F15,    KC_NO,    DPI_MOD,    DPI_RMOD,    S_D_MOD,    S_D_RMOD, \
                        DRGSCRL,    MOD_LSFT, SNIPING, MO(LAYER_MEDIA), MO(LAYER_SETTINGS)
 //TODO: Thumb keys should be mod keys or such
