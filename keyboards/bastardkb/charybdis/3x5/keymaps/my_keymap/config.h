@@ -17,9 +17,24 @@
 #pragma once
 
 // Hold tap configuration
-#define TAPPING_TERM 150
+#define TAPPING_TERM 180
 #define QUICK_TAP_TERM 120
-#define FLOW_TAP_TERM 120
+#define FLOW_TAP_TERM 160
+uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t* record, 
+                           uint16_t prev_keycode) {
+    if (is_flow_tap_key(keycode) && is_flow_tap_key(prev_keycode)) {
+        switch (keycode) {
+            case MT(MOD_RSFT, KC_SPC):
+              return FLOW_TAP_TERM - 40;  // Short timeout on these keys.
+            case MT(MOD_LSFT, KC_BSPC):
+              return FLOW_TAP_TERM - 40;  // Short timeout on these keys.
+            
+            default:
+              return FLOW_TAP_TERM;  // Longer timeout otherwise.
+        }
+    }
+    return 0;  // Disable Flow Tap.
+}
 
 #ifdef VIA_ENABLE
 /* VIA configuration. */
