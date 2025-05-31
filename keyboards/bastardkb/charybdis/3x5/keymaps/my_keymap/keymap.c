@@ -128,7 +128,7 @@ static uint16_t auto_pointer_layer_timer = 0;
  */
 #define LAYOUT_LAYER_SYMBOLS                                                                  \
     LSFT(KC_1), LSFT(KC_2), LSFT(KC_3), LSFT(KC_4), LSFT(KC_5), LSFT(KC_6), LSFT(KC_7), LSFT(KC_8), LSFT(KC_9), LSFT(KC_0), \
-    KC_MINUS, KC_L11, KC_L12, KC_L13, KC_NUHS, SFT_T(KC_NUHS), KC_L14, KC_L15, KC_L16, KC_UNDS, \
+    KC_MINUS, KC_L11, KC_L12, KC_L13, KC_NUHS, LSFT(KC_NUHS), KC_L14, KC_L15, KC_L16, KC_UNDS, \
        KC_HOME,    KC_PGDN,    KC_PGUP,    KC_END,    KC_DELETE,    KC_INSERT,    KC_LEFT, KC_DOWN,  KC_UP, KC_RIGHT, \
                                       __________THUMB_ROW__________
 
@@ -311,7 +311,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t* record,
                            uint16_t prev_keycode) {
-    if (is_flow_tap_key(keycode) && is_flow_tap_key(prev_keycode)) {
+//if (is_flow_tap_key(keycode) && is_flow_tap_key(prev_keycode)) {
         switch (keycode) {
             case MT(MOD_RSFT, KC_SPC):
               return FLOW_TAP_TERM - 40;  // Short timeout on these keys.
@@ -321,6 +321,6 @@ uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t* record,
             default:
               return FLOW_TAP_TERM;  // Longer timeout otherwise.
         }
-    }
+//    }
     return 0;  // Disable Flow Tap.
 }
