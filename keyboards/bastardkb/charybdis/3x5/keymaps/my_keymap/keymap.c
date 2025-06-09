@@ -310,8 +310,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 bool is_flow_tap_key(uint16_t keycode) {
-    switch (get_tap_keycode(keycode)) {
-        case KC_A ... KC_Z:
+    switch (keycode) {
+        case L00 ... R19:
             return true;
         case KC_L1 ... KC_L6:
             return true;
