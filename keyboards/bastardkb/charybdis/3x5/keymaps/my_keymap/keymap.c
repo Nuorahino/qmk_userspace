@@ -309,18 +309,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
-uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t* record,
-                           uint16_t prev_keycode) {
-//if (is_flow_tap_key(keycode) && is_flow_tap_key(prev_keycode)) {
-        switch (keycode) {
-            case MT(MOD_RSFT, KC_SPC):
-              return FLOW_TAP_TERM - 40;  // Short timeout on these keys.
-            case MT(MOD_LSFT, KC_BSPC):
-              return FLOW_TAP_TERM - 40;  // Short timeout on these keys.
+bool is_flow_tap_key(uint16_t keycode) {
 
-            default:
-              return FLOW_TAP_TERM;  // Longer timeout otherwise.
-        }
-//    }
-    return 0;  // Disable Flow Tap.
+    switch (get_tap_keycode(keycode)) {
+        case KC_A ... KC_Z:
+            return true;
+        case KC_L1 ... KC_L6:
+            return true;
+        cace KC_L11 ... KC_L_16:
+            return true;
+    }
+    return false;
 }
+
+
