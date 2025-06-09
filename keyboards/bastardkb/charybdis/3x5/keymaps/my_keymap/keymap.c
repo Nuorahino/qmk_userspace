@@ -311,7 +311,25 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 bool is_flow_tap_key(uint16_t keycode) {
     switch (keycode) {
-        case L00 ... R19:
+        case LT(LAYER_MOUSE, L10):
+            return true;
+        case LALT_T(L11):
+            return true;
+        case LCTL_T(L12):
+            return true;
+        case LGUI_T(L13):
+            return true;
+        case L14:
+            return true;
+        case R15:
+            return true;
+        case RGUI_T(R16):
+            return true;
+        case RCTL_T(R17):
+            return true;
+        case RALT_T(R18):
+            return true;
+        case LT(LAYER_MOUSE, R19):
             return true;
         case KC_L1 ... KC_L6:
             return true;
