@@ -100,8 +100,8 @@ static uint16_t auto_pointer_layer_timer = 0;
 /** \brief QWERTY layout (3 rows, 10 columns). */
 #define LAYOUT_LAYER_BASE                                                                     \
        KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, \
-       KC_A,    KC_R,    KC_S,    KC_T,    KC_D,    KC_H,    KC_N,    KC_E,    KC_I, KC_O, \
-       KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, \
+       KC_A,    KC_R,    KC_S,    KC_T,    KC_D,    KC_H,    KC_N,    KC_E,    KC_I,    KC_O, \
+       KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_M, KC_COMM,  KC_DOT,    KC_SLSH, \
                                       __________THUMB_ROW__________
 
 /**
@@ -311,25 +311,25 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 bool is_flow_tap_key(uint16_t keycode) {
     switch (keycode) {
-        case LT(LAYER_MOUSE, L10):
+        case LT(LAYER_MOUSE, KC_A):
             return true;
-        case LALT_T(L11):
+        case LALT_T(KC_R):
             return true;
-        case LCTL_T(L12):
+        case LCTL_T(KC_S):
             return true;
-        case LGUI_T(L13):
+        case LGUI_T(KC_T):
             return true;
-        case L14:
+        case KC_D:
             return true;
-        case R15:
+        case KC_H:
             return true;
-        case RGUI_T(R16):
+        case RGUI_T(KC_N):
             return true;
-        case RCTL_T(R17):
+        case RCTL_T(KC_E):
             return true;
-        case RALT_T(R18):
+        case RALT_T(KC_I):
             return true;
-        case LT(LAYER_MOUSE, R19):
+        case LT(LAYER_MOUSE, KC_O):
             return true;
         case KC_L1 ... KC_L6:
             return true;
