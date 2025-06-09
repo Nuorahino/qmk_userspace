@@ -316,7 +316,7 @@ bool is_flow_tap_key(uint16_t keycode) {
             return true;
         case KC_L1 ... KC_L6:
             return true;
-        cace KC_L11 ... KC_L_16:
+        case KC_L11 ... KC_L_16:
             return true;
     }
     return false;
