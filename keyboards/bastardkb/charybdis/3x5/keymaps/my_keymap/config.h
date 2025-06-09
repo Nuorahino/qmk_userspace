@@ -17,9 +17,9 @@
 #pragma once
 
 // Hold tap configuration
-#define TAPPING_TERM 180
+#define TAPPING_TERM 150
 #define QUICK_TAP_TERM 120
-#define FLOW_TAP_TERM 160
+#define FLOW_TAP_TERM 200
 
 #ifdef VIA_ENABLE
 /* VIA configuration. */
