@@ -27,19 +27,19 @@ typedef struct TapHolds {
   uint16_t  hold_code;
 } TapHold;
 
-#define KEY_1 LALT_T(KC_LCBR)
-#define KEY_2 LCTL_T(KC_LBRC)
-#define KEY_3 LGUI_T(KC_LPRN)
-#define KEY_4 RGUI_T(KC_RPRN)
-#define KEY_5 RCTL_T(KC_RBRC)
-#define KEY_6 RALT_T(KC_RCBR)
+#define KEY_1 LALT_T(KC_0)
+#define KEY_2 LCTL_T(KC_0)
+#define KEY_3 LGUI_T(KC_0)
+#define KEY_4 RGUI_T(KC_0)
+#define KEY_5 RCTL_T(KC_0)
+#define KEY_6 RALT_T(KC_0)
 
-#define KEY_11 LALT_T(C_GRV)
-#define KEY_12 LCTL_T(C_QUOT)
-#define KEY_13 LGUI_T(C_NUBS)
-#define KEY_14 RGUI_T(SFT(KC_NUBS))
-#define KEY_15 RCTL_T(SFT(KC_QUOT))
-#define KEY_16 RALT_T(SFT(KC_GRV))
+#define KEY_11 LALT_T(KC_0)
+#define KEY_12 LCTL_T(KC_0)
+#define KEY_13 LGUI_T(KC_0)
+#define KEY_14 RGUI_T(KC_0)
+#define KEY_15 RCTL_T(KC_0)
+#define KEY_16 RALT_T(KC_0)
 
 //TapHold tapholds[] = {
 //  { .tap_code = KC_LCBR, .hold_code = KC_LALT },
@@ -319,7 +319,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case KEY_1:
       if (record->tap.count) {
         if (record->event.pressed) {
-          tap_code16(LALT_T(KC_LCBR));
+          tap_code16(KC_LCBR);
         }
         return false;
       }
@@ -328,7 +328,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case KEY_2:
       if (record->tap.count) {
         if (record->event.pressed) {
-          tap_code16(LCTL_T(KC_LBRC));
+          tap_code16(KC_LBRC);
         }
         return false;
       }
@@ -337,7 +337,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case KEY_3:
       if (record->tap.count) {
         if (record->event.pressed) {
-          tap_code16(LGUI_T(KC_LPRN));
+          tap_code16(KC_LPRN);
         }
         return false;
       }
@@ -346,7 +346,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case KEY_4:
       if (record->tap.count) {
         if (record->event.pressed) {
-          tap_code16(RGUI_T(KC_RPRN));
+          tap_code16(KC_RPRN);
         }
         return false;
       }
@@ -355,7 +355,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case KEY_5:
       if (record->tap.count) {
         if (record->event.pressed) {
-          tap_code16(RCTL_T(KC_RBRC));
+          tap_code16(KC_RBRC);
         }
         return false;
       }
@@ -364,7 +364,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case KEY_6:
       if (record->tap.count) {
         if (record->event.pressed) {
-          tap_code16(RALT_T(KC_RCBR));
+          tap_code16(KC_RCBR);
         }
         return false;
       }
