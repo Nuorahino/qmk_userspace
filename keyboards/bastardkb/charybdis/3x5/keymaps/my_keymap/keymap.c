@@ -369,6 +369,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return false;
       }
     break;
+  }
 
 //#define KEY_11 LALT_T(C_GRV)
 //#define KEY_12 LCTL_T(C_QUOT)
