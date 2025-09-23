@@ -370,21 +370,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
     break;
 
-#define KEY_11 LALT_T(C_GRV)
-#define KEY_12 LCTL_T(C_QUOT)
-#define KEY_13 LGUI_T(C_NUBS)
-#define KEY_14 RGUI_T(SFT(KC_NUBS))
-#define KEY_15 RCTL_T(SFT(KC_QUOT))
-#define KEY_16 RALT_T(SFT(KC_GRV))
-    if (SAFE_RANGE <= keycode && keycode < KC_LAST) {
-        TapHold taphold = tapholds[keycode - SAFE_RANGE];
-        if (record-> tap.count) {
-          if (record->event.pressed) {
-            tap_code16(taphold.tap_code);
-          }
-          return false;
-        }
-
+//#define KEY_11 LALT_T(C_GRV)
+//#define KEY_12 LCTL_T(C_QUOT)
+//#define KEY_13 LGUI_T(C_NUBS)
+//#define KEY_14 RGUI_T(SFT(KC_NUBS))
+//#define KEY_15 RCTL_T(SFT(KC_QUOT))
+//#define KEY_16 RALT_T(SFT(KC_GRV))
+//    if (SAFE_RANGE <= keycode && keycode < KC_LAST) {
+//        TapHold taphold = tapholds[keycode - SAFE_RANGE];
+//
 //        // Hold Mod key, until it is released
 //        if (record->event.pressed) {
 //            timer = timer_read();
@@ -397,7 +391,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 //            }
 //        }
 //        return false;
-    }
+//    }
     return true;
 }
 
