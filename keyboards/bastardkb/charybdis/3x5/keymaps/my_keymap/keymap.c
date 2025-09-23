@@ -315,61 +315,61 @@ void rgb_matrix_update_pwm_buffers(void);
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 //    static uint16_t timer;
 
-  switch (keycode) {
-    case KEY_1:
-      if (record->tap.count) {
-        if (record->event.pressed) {
-          tap_code16(KC_LCBR);
-        }
-        return false;
-      }
-    break;
-
-    case KEY_2:
-      if (record->tap.count) {
-        if (record->event.pressed) {
-          tap_code16(KC_LBRC);
-        }
-        return false;
-      }
-    break;
-
-    case KEY_3:
-      if (record->tap.count) {
-        if (record->event.pressed) {
-          tap_code16(KC_LPRN);
-        }
-        return false;
-      }
-    break;
-
-    case KEY_4:
-      if (record->tap.count) {
-        if (record->event.pressed) {
-          tap_code16(KC_RPRN);
-        }
-        return false;
-      }
-    break;
-
-    case KEY_5:
-      if (record->tap.count) {
-        if (record->event.pressed) {
-          tap_code16(KC_RBRC);
-        }
-        return false;
-      }
-    break;
-
-    case KEY_6:
-      if (record->tap.count) {
-        if (record->event.pressed) {
-          tap_code16(KC_RCBR);
-        }
-        return false;
-      }
-    break;
-  }
+//  switch (keycode) {
+//    case KEY_1:
+//      if (record->tap.count) {
+//        if (record->event.pressed) {
+//          tap_code16(KC_LCBR);
+//        }
+//        return false;
+//      }
+//    break;
+//
+//    case KEY_2:
+//      if (record->tap.count) {
+//        if (record->event.pressed) {
+//          tap_code16(KC_LBRC);
+//        }
+//        return false;
+//      }
+//    break;
+//
+//    case KEY_3:
+//      if (record->tap.count) {
+//        if (record->event.pressed) {
+//          tap_code16(KC_LPRN);
+//        }
+//        return false;
+//      }
+//    break;
+//
+//    case KEY_4:
+//      if (record->tap.count) {
+//        if (record->event.pressed) {
+//          tap_code16(KC_RPRN);
+//        }
+//        return false;
+//      }
+//    break;
+//
+//    case KEY_5:
+//      if (record->tap.count) {
+//        if (record->event.pressed) {
+//          tap_code16(KC_RBRC);
+//        }
+//        return false;
+//      }
+//    break;
+//
+//    case KEY_6:
+//      if (record->tap.count) {
+//        if (record->event.pressed) {
+//          tap_code16(KC_RCBR);
+//        }
+//        return false;
+//      }
+//    break;
+//  }
 
 //#define KEY_11 LALT_T(C_GRV)
 //#define KEY_12 LCTL_T(C_QUOT)
