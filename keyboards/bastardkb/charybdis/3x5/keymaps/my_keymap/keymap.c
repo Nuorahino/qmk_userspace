@@ -27,34 +27,38 @@ typedef struct TapHolds {
   uint16_t  hold_code;
 } TapHold;
 
-//#define KEY_1 LALT_T(KC_0)
-//#define KEY_2 LCTL_T(KC_0)
-//#define KEY_3 LGUI_T(KC_0)
-//#define KEY_4 RGUI_T(KC_0)
-//#define KEY_5 RCTL_T(KC_0)
-//#define KEY_6 RALT_T(KC_0)
-//
-//#define KEY_11 LALT_T(KC_0)
-//#define KEY_12 LCTL_T(KC_0)
-//#define KEY_13 LGUI_T(KC_0)
-//#define KEY_14 RGUI_T(KC_0)
-//#define KEY_15 RCTL_T(KC_0)
-//#define KEY_16 RALT_T(KC_0)
+/*
+#define KEY_1 LALT_T(KC_0)
+#define KEY_2 LCTL_T(KC_0)
+#define KEY_3 LGUI_T(KC_0)
+#define KEY_4 RGUI_T(KC_0)
+#define KEY_5 RCTL_T(KC_0)
+#define KEY_6 RALT_T(KC_0)
 
-//TapHold tapholds[] = {
-//  { .tap_code = KC_LCBR, .hold_code = KC_LALT },
-//  { .tap_code = KC_LBRC, .hold_code = KC_LCTL },
-//  { .tap_code = KC_LPRN, .hold_code = KC_LGUI },
-//  { .tap_code = KC_RPRN, .hold_code = KC_RGUI },
-//  { .tap_code = KC_RBRC, .hold_code = KC_RCTL },
-//  { .tap_code = KC_RCBR, .hold_code = KC_RALT },
-//  { .tap_code = KC_GRV, .hold_code = KC_LALT },
-//  { .tap_code = KC_QUOT, .hold_code = KC_LCTL },
-//  { .tap_code = KC_NUBS, .hold_code = KC_LGUI },
-//  { .tap_code = LSFT(KC_NUBS), .hold_code = KC_RGUI },
-//  { .tap_code = LSFT(KC_QUOT), .hold_code = KC_RCTL },
-//  { .tap_code = LSFT(KC_GRV), .hold_code = KC_RALT },
-//};
+#define KEY_11 LALT_T(KC_0)
+#define KEY_12 LCTL_T(KC_0)
+#define KEY_13 LGUI_T(KC_0)
+#define KEY_14 RGUI_T(KC_0)
+#define KEY_15 RCTL_T(KC_0)
+#define KEY_16 RALT_T(KC_0)
+*/
+
+/*
+TapHold tapholds[] = {
+  { .tap_code = KC_LCBR, .hold_code = KC_LALT },
+  { .tap_code = KC_LBRC, .hold_code = KC_LCTL },
+  { .tap_code = KC_LPRN, .hold_code = KC_LGUI },
+  { .tap_code = KC_RPRN, .hold_code = KC_RGUI },
+  { .tap_code = KC_RBRC, .hold_code = KC_RCTL },
+  { .tap_code = KC_RCBR, .hold_code = KC_RALT },
+  { .tap_code = KC_GRV, .hold_code = KC_LALT },
+  { .tap_code = KC_QUOT, .hold_code = KC_LCTL },
+  { .tap_code = KC_NUBS, .hold_code = KC_LGUI },
+  { .tap_code = LSFT(KC_NUBS), .hold_code = KC_RGUI },
+  { .tap_code = LSFT(KC_QUOT), .hold_code = KC_RCTL },
+  { .tap_code = LSFT(KC_GRV), .hold_code = KC_RALT },
+};
+*/
 
 enum CustomKeycodes {
   KC_L1 = SAFE_RANGE,
@@ -131,13 +135,15 @@ static uint16_t auto_pointer_layer_timer = 0;
        KC_A,    KC_R,    KC_S,    KC_T,    KC_D,    KC_H,    KC_N,    KC_E,    KC_I,    KC_O, \
         KC_NO, KC_NO, KC_COPY, KC_PASTE, KC_NO, KC_NO, KC_NO, KC_NO,   KC_NO, KC_PSCR, \
                                       __________THUMB_ROW__________
-       //KC_MINUS,    KEY_1,    KEY_2,    KEY_3,    KC_EQUAL,    KC_PLUS,    KEY_4,    KEY_5,    KEY_6, KC_UNDS, \
-//#define LAYOUT_LAYER_NUMBERS                                                                    \
-//       KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0, \
-//       KC_MINUS,    KC_L1,    KC_L2,    KC_L3,    KC_EQUAL,    KC_PLUS,    KC_L4,    KC_L5,    KC_L6, KC_UNDS, \
-//        KC_NO, KC_NO, KC_COPY, KC_PASTE, KC_NO, KC_NO, KC_NO, KC_NO,   KC_NO, KC_PSCR, \
-//                                      __________THUMB_ROW__________
-// TODO: Check if there is more stuff, that should be inserted into the bottom row
+/*
+       KC_MINUS,    KEY_1,    KEY_2,    KEY_3,    KC_EQUAL,    KC_PLUS,    KEY_4,    KEY_5,    KEY_6, KC_UNDS, \
+#define LAYOUT_LAYER_NUMBERS                                                                    \
+       KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0, \
+       KC_MINUS,    KC_L1,    KC_L2,    KC_L3,    KC_EQUAL,    KC_PLUS,    KC_L4,    KC_L5,    KC_L6, KC_UNDS, \
+        KC_NO, KC_NO, KC_COPY, KC_PASTE, KC_NO, KC_NO, KC_NO, KC_NO,   KC_NO, KC_PSCR, \
+*/
+                                      __________THUMB_ROW__________
+ TODO: Check if there is more stuff, that should be inserted into the bottom row
 
 /**
  * \brief Symbols layer.
@@ -154,11 +160,13 @@ static uint16_t auto_pointer_layer_timer = 0;
     //KC_MINUS, KEY_11, KEY_12, KEY_13, KC_NUHS, LSFT(KC_NUHS), KEY_14, KEY_15, KEY_16, KC_UNDS, \
 
 
-//#define LAYOUT_LAYER_SYMBOLS                                                                  \
-//    LSFT(KC_1), LSFT(KC_2), LSFT(KC_3), LSFT(KC_4), LSFT(KC_5), LSFT(KC_6), LSFT(KC_7), LSFT(KC_8), LSFT(KC_9), LSFT(KC_0), \
-//    KC_MINUS, KC_L11, KC_L12, KC_L13, KC_NUHS, LSFT(KC_NUHS), KC_L14, KC_L15, KC_L16, KC_UNDS, \
-//       KC_HOME,    KC_PGDN,    KC_PGUP,    KC_END,    KC_DELETE,    KC_INSERT,    KC_LEFT, KC_DOWN,  KC_UP, KC_RIGHT, \
-//                                      __________THUMB_ROW__________
+ /*
+#define LAYOUT_LAYER_SYMBOLS                                                                  \
+    LSFT(KC_1), LSFT(KC_2), LSFT(KC_3), LSFT(KC_4), LSFT(KC_5), LSFT(KC_6), LSFT(KC_7), LSFT(KC_8), LSFT(KC_9), LSFT(KC_0), \
+    KC_MINUS, KC_L11, KC_L12, KC_L13, KC_NUHS, LSFT(KC_NUHS), KC_L14, KC_L15, KC_L16, KC_UNDS, \
+       KC_HOME,    KC_PGDN,    KC_PGUP,    KC_END,    KC_DELETE,    KC_INSERT,    KC_LEFT, KC_DOWN,  KC_UP, KC_RIGHT, \
+                                      __________THUMB_ROW__________
+*/
 
 
 /**
@@ -316,89 +324,99 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 void rgb_matrix_update_pwm_buffers(void);
 #endif
 
-//bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-////    static uint16_t timer;
-//
-////  switch (keycode) {
-////    case KEY_1:
-////      if (record->tap.count) {
-////        if (record->event.pressed) {
-////          tap_code16(KC_LCBR);
-////        }
-////        return false;
-////      }
-////    break;
-////
-////    case KEY_2:
-////      if (record->tap.count) {
-////        if (record->event.pressed) {
-////          tap_code16(KC_LBRC);
-////        }
-////        return false;
-////      }
-////    break;
-////
-////    case KEY_3:
-////      if (record->tap.count) {
-////        if (record->event.pressed) {
-////          tap_code16(KC_LPRN);
-////        }
-////        return false;
-////      }
-////    break;
-////
-////    case KEY_4:
-////      if (record->tap.count) {
-////        if (record->event.pressed) {
-////          tap_code16(KC_RPRN);
-////        }
-////        return false;
-////      }
-////    break;
-////
-////    case KEY_5:
-////      if (record->tap.count) {
-////        if (record->event.pressed) {
-////          tap_code16(KC_RBRC);
-////        }
-////        return false;
-////      }
-////    break;
-////
-////    case KEY_6:
-////      if (record->tap.count) {
-////        if (record->event.pressed) {
-////          tap_code16(KC_RCBR);
-////        }
-////        return false;
-////      }
-////    break;
-////  }
-//
-////#define KEY_11 LALT_T(C_GRV)
-////#define KEY_12 LCTL_T(C_QUOT)
-////#define KEY_13 LGUI_T(C_NUBS)
-////#define KEY_14 RGUI_T(SFT(KC_NUBS))
-////#define KEY_15 RCTL_T(SFT(KC_QUOT))
-////#define KEY_16 RALT_T(SFT(KC_GRV))
-////    if (SAFE_RANGE <= keycode && keycode < KC_LAST) {
-////        TapHold taphold = tapholds[keycode - SAFE_RANGE];
-////
-////        // Hold Mod key, until it is released
-////        if (record->event.pressed) {
-////            timer = timer_read();
-////            register_code(taphold.hold_code);
-////        } else {
-////            unregister_code(taphold.hold_code);
-////            if (timer_elapsed(timer) < TAPPING_TERM) {
-////                tap_code16(taphold.tap_code);
-////                //send_char(taphold.tap_char);
-////            }
-////        }
-////        return false;
-////    }
-//    return true;
-//}
+/*
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+
+  switch (keycode) {
+    case KEY_1:
+      if (record->tap.count) {
+        if (record->event.pressed) {
+          tap_code16(KC_LCBR);
+        }
+        return false;
+      }
+    break;
+
+    case KEY_2:
+      if (record->tap.count) {
+        if (record->event.pressed) {
+          tap_code16(KC_LBRC);
+        }
+        return false;
+      }
+    break;
+
+    case KEY_3:
+      if (record->tap.count) {
+        if (record->event.pressed) {
+          tap_code16(KC_LPRN);
+        }
+        return false;
+      }
+    break;
+
+    case KEY_4:
+      if (record->tap.count) {
+        if (record->event.pressed) {
+          tap_code16(KC_RPRN);
+        }
+        return false;
+      }
+    break;
+
+    case KEY_5:
+      if (record->tap.count) {
+        if (record->event.pressed) {
+          tap_code16(KC_RBRC);
+        }
+        return false;
+      }
+    break;
+
+    case KEY_6:
+      if (record->tap.count) {
+        if (record->event.pressed) {
+          tap_code16(KC_RCBR);
+        }
+        return false;
+      }
+    break;
+  }
+
+    return true;
+}
+*/
+
+/*
+
+    static uint16_t timer;
+
+#define KEY_11 LALT_T(C_GRV)
+#define KEY_12 LCTL_T(C_QUOT)
+#define KEY_13 LGUI_T(C_NUBS)
+#define KEY_14 RGUI_T(SFT(KC_NUBS))
+#define KEY_15 RCTL_T(SFT(KC_QUOT))
+#define KEY_16 RALT_T(SFT(KC_GRV))
+    if (SAFE_RANGE <= keycode && keycode < KC_LAST) {
+        TapHold taphold = tapholds[keycode - SAFE_RANGE];
+
+        // Hold Mod key, until it is released
+        if (record->event.pressed) {
+            timer = timer_read();
+            register_code(taphold.hold_code);
+        } else {
+            unregister_code(taphold.hold_code);
+            if (timer_elapsed(timer) < TAPPING_TERM) {
+                tap_code16(taphold.tap_code);
+                //send_char(taphold.tap_char);
+            }
+        }
+        return false;
+    }
+
+    return true;
+}
+*/
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
@@ -434,11 +452,13 @@ bool is_flow_tap_key(uint16_t keycode) {
             return true;
         case LT(LAYER_MOUSE, KC_O):
             return true;
-//  TODO: Add the other 2 layers keys
-//        case KC_L1 ... KC_L6:
-//            return true;
-//        case KC_L11 ... KC_L16:
-//            return true;
+/*
+  TODO: Add the other 2 layers keys
+        case KC_L1 ... KC_L6:
+            return true;
+        case KC_L11 ... KC_L16:
+            return true;
+*/
     }
     return false;
 }
