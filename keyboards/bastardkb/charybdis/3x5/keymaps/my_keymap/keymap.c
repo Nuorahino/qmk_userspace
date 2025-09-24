@@ -334,6 +334,9 @@ uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t* record,
         }
 //    }
     return 0;  // Disable Flow Tap.
+}
+
+
 bool is_flow_tap_key(uint16_t keycode) {
     switch (keycode) {
         case LT(LAYER_MOUSE, KC_A):
@@ -363,5 +366,3 @@ bool is_flow_tap_key(uint16_t keycode) {
     }
     return false;
 }
-
-
