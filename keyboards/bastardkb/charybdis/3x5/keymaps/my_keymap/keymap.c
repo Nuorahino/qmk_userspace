@@ -42,6 +42,7 @@ typedef struct TapHolds {
 #define KEY_15 RCTL_T(KC_0)
 #define KEY_16 RALT_T(KC_0)
 
+/*
 TapHold tapholds[] = {
   { .tap_code = KC_LCBR, .hold_code = KC_LALT },
   { .tap_code = KC_LBRC, .hold_code = KC_LCTL },
@@ -56,6 +57,7 @@ TapHold tapholds[] = {
   { .tap_code = LSFT(KC_QUOT), .hold_code = KC_RCTL },
   { .tap_code = LSFT(KC_GRV), .hold_code = KC_RALT },
 };
+*/
 
 enum CustomKeycodes {
   KC_L1 = SAFE_RANGE,
@@ -304,23 +306,23 @@ void rgb_matrix_update_pwm_buffers(void);
 #endif
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    static uint16_t timer;
-
-    if (SAFE_RANGE <= keycode && keycode < KC_LAST) {
-        TapHold taphold = tapholds[keycode - SAFE_RANGE];
-
-        if (record->event.pressed) {
-            timer = timer_read();
-            register_code(taphold.hold_code);
-        } else {
-            unregister_code(taphold.hold_code);
-            if (timer_elapsed(timer) < TAPPING_TERM) {
-                tap_code16(taphold.tap_code);
-                //send_char(taphold.tap_char);
-            }
-        }
-        return false;
-    }
+//    static uint16_t timer;
+//
+//    if (SAFE_RANGE <= keycode && keycode < KC_LAST) {
+//        TapHold taphold = tapholds[keycode - SAFE_RANGE];
+//
+//        if (record->event.pressed) {
+//            timer = timer_read();
+//            register_code(taphold.hold_code);
+//        } else {
+//            unregister_code(taphold.hold_code);
+//            if (timer_elapsed(timer) < TAPPING_TERM) {
+//                tap_code16(taphold.tap_code);
+//                //send_char(taphold.tap_char);
+//            }
+//        }
+//        return false;
+//    }
     return true;
 }
 
@@ -374,10 +376,12 @@ bool is_flow_tap_key(uint16_t keycode) {
             return true;
         case LT(LAYER_MOUSE, KC_O):
             return true;
+/*
         case KC_L1 ... KC_L6:
             return true;
         case KC_L11 ... KC_L16:
             return true;
+*/
     }
     return false;
 }
