@@ -27,6 +27,21 @@ typedef struct TapHolds {
   uint16_t  hold_code;
 } TapHold;
 
+
+#define KEY_1 LALT_T(KC_0)
+#define KEY_2 LCTL_T(KC_0)
+#define KEY_3 LGUI_T(KC_0)
+#define KEY_4 RGUI_T(KC_0)
+#define KEY_5 RCTL_T(KC_0)
+#define KEY_6 RALT_T(KC_0)
+
+#define KEY_11 LALT_T(KC_0)
+#define KEY_12 LCTL_T(KC_0)
+#define KEY_13 LGUI_T(KC_0)
+#define KEY_14 RGUI_T(KC_0)
+#define KEY_15 RCTL_T(KC_0)
+#define KEY_16 RALT_T(KC_0)
+
 TapHold tapholds[] = {
   { .tap_code = KC_LCBR, .hold_code = KC_LALT },
   { .tap_code = KC_LBRC, .hold_code = KC_LCTL },
