@@ -57,7 +57,6 @@ TapHold tapholds[] = {
   { .tap_code = LSFT(KC_QUOT), .hold_code = KC_RCTL },
   { .tap_code = LSFT(KC_GRV), .hold_code = KC_RALT },
 };
-*/
 
 enum CustomKeycodes {
   KC_L1 = SAFE_RANGE,
@@ -74,6 +73,7 @@ enum CustomKeycodes {
   KC_L16,
   KC_LAST,
 };
+*/
 
 
 enum charybdis_keymap_layers {
@@ -306,23 +306,61 @@ void rgb_matrix_update_pwm_buffers(void);
 #endif
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-//    static uint16_t timer;
-//
-//    if (SAFE_RANGE <= keycode && keycode < KC_LAST) {
-//        TapHold taphold = tapholds[keycode - SAFE_RANGE];
-//
-//        if (record->event.pressed) {
-//            timer = timer_read();
-//            register_code(taphold.hold_code);
-//        } else {
-//            unregister_code(taphold.hold_code);
-//            if (timer_elapsed(timer) < TAPPING_TERM) {
-//                tap_code16(taphold.tap_code);
-//                //send_char(taphold.tap_char);
-//            }
-//        }
-//        return false;
-//    }
+  switch (keycode) {
+      case KEY_1:
+        if (record->tap.count) {
+          if (record->event.pressed) {
+            tap_code16(KC_LCBR);
+          }
+          return false;
+        }
+      break;
+
+      case KEY_2:
+        if (record->tap.count) {
+          if (record->event.pressed) {
+            tap_code16(KC_LBRC);
+          }
+          return false;
+        }
+      break;
+
+      case KEY_3:
+        if (record->tap.count) {
+          if (record->event.pressed) {
+            tap_code16(KC_LPRN);
+          }
+          return false;
+        }
+      break;
+
+      case KEY_4:
+        if (record->tap.count) {
+          if (record->event.pressed) {
+            tap_code16(KC_RPRN);
+          }
+          return false;
+        }
+      break;
+
+      case KEY_5:
+        if (record->tap.count) {
+          if (record->event.pressed) {
+            tap_code16(KC_RBRC);
+          }
+          return false;
+        }
+      break;
+
+      case KEY_6:
+        if (record->tap.count) {
+          if (record->event.pressed) {
+            tap_code16(KC_RCBR);
+          }
+          return false;
+        }
+      break;
+    }
     return true;
 }
 
