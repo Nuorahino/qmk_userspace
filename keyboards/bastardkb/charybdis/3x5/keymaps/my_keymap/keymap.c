@@ -312,89 +312,89 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 void rgb_matrix_update_pwm_buffers(void);
 #endif
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-//    static uint16_t timer;
-
-//  switch (keycode) {
-//    case KEY_1:
-//      if (record->tap.count) {
-//        if (record->event.pressed) {
-//          tap_code16(KC_LCBR);
-//        }
-//        return false;
-//      }
-//    break;
+//bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+////    static uint16_t timer;
 //
-//    case KEY_2:
-//      if (record->tap.count) {
-//        if (record->event.pressed) {
-//          tap_code16(KC_LBRC);
-//        }
-//        return false;
-//      }
-//    break;
+////  switch (keycode) {
+////    case KEY_1:
+////      if (record->tap.count) {
+////        if (record->event.pressed) {
+////          tap_code16(KC_LCBR);
+////        }
+////        return false;
+////      }
+////    break;
+////
+////    case KEY_2:
+////      if (record->tap.count) {
+////        if (record->event.pressed) {
+////          tap_code16(KC_LBRC);
+////        }
+////        return false;
+////      }
+////    break;
+////
+////    case KEY_3:
+////      if (record->tap.count) {
+////        if (record->event.pressed) {
+////          tap_code16(KC_LPRN);
+////        }
+////        return false;
+////      }
+////    break;
+////
+////    case KEY_4:
+////      if (record->tap.count) {
+////        if (record->event.pressed) {
+////          tap_code16(KC_RPRN);
+////        }
+////        return false;
+////      }
+////    break;
+////
+////    case KEY_5:
+////      if (record->tap.count) {
+////        if (record->event.pressed) {
+////          tap_code16(KC_RBRC);
+////        }
+////        return false;
+////      }
+////    break;
+////
+////    case KEY_6:
+////      if (record->tap.count) {
+////        if (record->event.pressed) {
+////          tap_code16(KC_RCBR);
+////        }
+////        return false;
+////      }
+////    break;
+////  }
 //
-//    case KEY_3:
-//      if (record->tap.count) {
-//        if (record->event.pressed) {
-//          tap_code16(KC_LPRN);
-//        }
-//        return false;
-//      }
-//    break;
-//
-//    case KEY_4:
-//      if (record->tap.count) {
-//        if (record->event.pressed) {
-//          tap_code16(KC_RPRN);
-//        }
-//        return false;
-//      }
-//    break;
-//
-//    case KEY_5:
-//      if (record->tap.count) {
-//        if (record->event.pressed) {
-//          tap_code16(KC_RBRC);
-//        }
-//        return false;
-//      }
-//    break;
-//
-//    case KEY_6:
-//      if (record->tap.count) {
-//        if (record->event.pressed) {
-//          tap_code16(KC_RCBR);
-//        }
-//        return false;
-//      }
-//    break;
-//  }
-
-//#define KEY_11 LALT_T(C_GRV)
-//#define KEY_12 LCTL_T(C_QUOT)
-//#define KEY_13 LGUI_T(C_NUBS)
-//#define KEY_14 RGUI_T(SFT(KC_NUBS))
-//#define KEY_15 RCTL_T(SFT(KC_QUOT))
-//#define KEY_16 RALT_T(SFT(KC_GRV))
-//    if (SAFE_RANGE <= keycode && keycode < KC_LAST) {
-//        TapHold taphold = tapholds[keycode - SAFE_RANGE];
-//
-//        // Hold Mod key, until it is released
-//        if (record->event.pressed) {
-//            timer = timer_read();
-//            register_code(taphold.hold_code);
-//        } else {
-//            unregister_code(taphold.hold_code);
-//            if (timer_elapsed(timer) < TAPPING_TERM) {
-//                tap_code16(taphold.tap_code);
-//                //send_char(taphold.tap_char);
-//            }
-//        }
-//        return false;
-//    }
-    return true;
-}
+////#define KEY_11 LALT_T(C_GRV)
+////#define KEY_12 LCTL_T(C_QUOT)
+////#define KEY_13 LGUI_T(C_NUBS)
+////#define KEY_14 RGUI_T(SFT(KC_NUBS))
+////#define KEY_15 RCTL_T(SFT(KC_QUOT))
+////#define KEY_16 RALT_T(SFT(KC_GRV))
+////    if (SAFE_RANGE <= keycode && keycode < KC_LAST) {
+////        TapHold taphold = tapholds[keycode - SAFE_RANGE];
+////
+////        // Hold Mod key, until it is released
+////        if (record->event.pressed) {
+////            timer = timer_read();
+////            register_code(taphold.hold_code);
+////        } else {
+////            unregister_code(taphold.hold_code);
+////            if (timer_elapsed(timer) < TAPPING_TERM) {
+////                tap_code16(taphold.tap_code);
+////                //send_char(taphold.tap_char);
+////            }
+////        }
+////        return false;
+////    }
+//    return true;
+//}
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
