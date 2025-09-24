@@ -129,7 +129,7 @@ static uint16_t auto_pointer_layer_timer = 0;
  */
 #define LAYOUT_LAYER_NUMBERS                                                                    \
        KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0, \
-       KC_MINUS,    KC_L1,    KC_L2,    KC_L3,    KC_EQUAL,    KC_PLUS,    KC_L4,    KC_L5,    KC_L6, KC_UNDS, \
+       KC_MINUS,    KEY_1,    KEY_2,    KEY_3,    KC_EQUAL,    KC_PLUS,    KEY_4,    KEY_5,    KEY_6, KC_UNDS, \
         KC_NO, KC_NO, KC_COPY, KC_PASTE, KC_NO, KC_NO, KC_NO, KC_NO,   KC_NO, KC_PSCR, \
                                       __________THUMB_ROW__________
 // TODO: Check if there is more stuff, that should be inserted into the bottom row
@@ -143,7 +143,7 @@ static uint16_t auto_pointer_layer_timer = 0;
  */
 #define LAYOUT_LAYER_SYMBOLS                                                                  \
     LSFT(KC_1), LSFT(KC_2), LSFT(KC_3), LSFT(KC_4), LSFT(KC_5), LSFT(KC_6), LSFT(KC_7), LSFT(KC_8), LSFT(KC_9), LSFT(KC_0), \
-    KC_MINUS, KC_L11, KC_L12, KC_L13, KC_NUHS, LSFT(KC_NUHS), KC_L14, KC_L15, KC_L16, KC_UNDS, \
+   KC_MINUS,    KEY_11,    KEY_12,    KEY_13,    KC_NUHS,    LSFT(KC_NUHS),    KEY_14,    KEY_15,    KEY_16, KC_UNDS, \
        KC_HOME,    KC_PGDN,    KC_PGUP,    KC_END,    KC_DELETE,    KC_INSERT,    KC_LEFT, KC_DOWN,  KC_UP, KC_RIGHT, \
                                       __________THUMB_ROW__________
 
