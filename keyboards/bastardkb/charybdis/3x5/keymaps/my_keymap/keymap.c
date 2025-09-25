@@ -28,12 +28,12 @@ typedef struct TapHolds {
 } TapHold;
 
 
-#define KEY_1 LALT_T(KC_0)
-#define KEY_2 LCTL_T(KC_0)
-#define KEY_3 LGUI_T(KC_0)
-#define KEY_4 RGUI_T(KC_0)
-#define KEY_5 RCTL_T(KC_0)
-#define KEY_6 RALT_T(KC_0)
+#define KEY_1 LALT_T(KC_1)
+#define KEY_2 LCTL_T(KC_2)
+#define KEY_3 LGUI_T(KC_3)
+#define KEY_4 RGUI_T(KC_4)
+#define KEY_5 RCTL_T(KC_5)
+#define KEY_6 RALT_T(KC_6)
 
 #define KEY_11 LALT_T(KC_0)
 #define KEY_12 LCTL_T(KC_0)
@@ -307,61 +307,61 @@ void rgb_matrix_update_pwm_buffers(void);
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-      case KEY_1:
-        if (record->tap.count) {
-          if (record->event.pressed) {
-            tap_code16(KC_LCBR);
-          }
-          return false;
+    case KEY_1:
+      if (record->tap.count) {
+        if (record->event.pressed) {
+          tap_code16(KC_LCBR);
         }
+        return false;
+      }
       break;
 
-      case KEY_2:
-        if (record->tap.count) {
-          if (record->event.pressed) {
-            tap_code16(KC_LBRC);
-          }
-          return false;
+    case KEY_2:
+      if (record->tap.count) {
+        if (record->event.pressed) {
+          tap_code16(KC_LBRC);
         }
+        return false;
+      }
       break;
 
-      case KEY_3:
-        if (record->tap.count) {
-          if (record->event.pressed) {
-            tap_code16(KC_LPRN);
-          }
-          return false;
+    case KEY_3:
+      if (record->tap.count) {
+        if (record->event.pressed) {
+          tap_code16(KC_LPRN);
         }
+        return false;
+      }
       break;
 
-      case KEY_4:
-        if (record->tap.count) {
-          if (record->event.pressed) {
-            tap_code16(KC_RPRN);
-          }
-          return false;
+    case KEY_4:
+      if (record->tap.count) {
+        if (record->event.pressed) {
+          tap_code16(KC_RPRN);
         }
+        return false;
+      }
       break;
 
-      case KEY_5:
-        if (record->tap.count) {
-          if (record->event.pressed) {
-            tap_code16(KC_RBRC);
-          }
-          return false;
+    case KEY_5:
+      if (record->tap.count) {
+        if (record->event.pressed) {
+          tap_code16(KC_RBRC);
         }
+        return false;
+      }
       break;
 
-      case KEY_6:
-        if (record->tap.count) {
-          if (record->event.pressed) {
-            tap_code16(KC_RCBR);
-          }
-          return false;
+    case KEY_6:
+      if (record->tap.count) {
+        if (record->event.pressed) {
+          tap_code16(KC_RCBR);
         }
+        return false;
+      }
       break;
-    }
-    return true;
+  }
+  return true;
 }
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
