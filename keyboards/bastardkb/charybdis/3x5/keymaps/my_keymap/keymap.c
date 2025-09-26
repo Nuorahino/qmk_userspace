@@ -395,23 +395,6 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     }
 }
 
-uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t* record,
-                           uint16_t prev_keycode) {
-//if (is_flow_tap_key(keycode) && is_flow_tap_key(prev_keycode)) {
-        switch (keycode) {
-            case MT(MOD_RSFT, KC_SPC):
-              return FLOW_TAP_TERM - 200;  // Short timeout on these keys.
-            case MT(MOD_LSFT, KC_BSPC):
-              return FLOW_TAP_TERM - 200;  // Short timeout on these keys.
-
-            default:
-              return FLOW_TAP_TERM;  // Longer timeout otherwise.
-        }
-//    }
-    return 0;  // Disable Flow Tap.
-}
-
-
 bool is_flow_tap_key(uint16_t keycode) {
     switch (keycode) {
         case LT(LAYER_MOUSE, KC_A):
@@ -434,12 +417,46 @@ bool is_flow_tap_key(uint16_t keycode) {
             return true;
         case LT(LAYER_MOUSE, KC_O):
             return true;
-/*
-        case KC_L1 ... KC_L6:
+        case KEY_1:
             return true;
-        case KC_L11 ... KC_L16:
+        case KEY_2:
             return true;
-*/
+        case KEY_3:
+            return true;
+        case KEY_4:
+            return true;
+        case KEY_5:
+            return true;
+        case KEY_6:
+            return true;
+        case KEY_11:
+            return true;
+        case KEY_12:
+            return true;
+        case KEY_13:
+            return true;
+        case KEY_14:
+            return true;
+        case KEY_15:
+            return true;
+        case KEY_16:
+            return true;
     }
     return false;
+}
+
+uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t* record,
+                           uint16_t prev_keycode) {
+//if (is_flow_tap_key(keycode) && is_flow_tap_key(prev_keycode)) {
+        switch (keycode) {
+            case MT(MOD_RSFT, KC_SPC):
+              return FLOW_TAP_TERM - 200;  // Short timeout on these keys.
+            case MT(MOD_LSFT, KC_BSPC):
+              return FLOW_TAP_TERM - 200;  // Short timeout on these keys.
+
+            default:
+              return FLOW_TAP_TERM;  // Longer timeout otherwise.
+        }
+//    }
+    return 0;  // Disable Flow Tap.
 }
