@@ -28,53 +28,19 @@ typedef struct TapHolds {
 } TapHold;
 
 
-#define KEY_1 LALT_T(KC_1)
-#define KEY_2 LCTL_T(KC_2)
-#define KEY_3 LGUI_T(KC_3)
-#define KEY_4 RGUI_T(KC_4)
-#define KEY_5 RCTL_T(KC_5)
-#define KEY_6 RALT_T(KC_6)
+#define KEY_1 LALT_T(KC_F1)
+#define KEY_2 LCTL_T(KC_F2)
+#define KEY_3 LGUI_T(KC_F3)
+#define KEY_4 RGUI_T(KC_F4)
+#define KEY_5 RCTL_T(KC_F5)
+#define KEY_6 RALT_T(KC_F6)
 
-#define KEY_11 LALT_T(KC_0)
-#define KEY_12 LCTL_T(KC_0)
-#define KEY_13 LGUI_T(KC_0)
-#define KEY_14 RGUI_T(KC_0)
-#define KEY_15 RCTL_T(KC_0)
-#define KEY_16 RALT_T(KC_0)
-
-/*
-TapHold tapholds[] = {
-  { .tap_code = KC_LCBR, .hold_code = KC_LALT },
-  { .tap_code = KC_LBRC, .hold_code = KC_LCTL },
-  { .tap_code = KC_LPRN, .hold_code = KC_LGUI },
-  { .tap_code = KC_RPRN, .hold_code = KC_RGUI },
-  { .tap_code = KC_RBRC, .hold_code = KC_RCTL },
-  { .tap_code = KC_RCBR, .hold_code = KC_RALT },
-  { .tap_code = KC_GRV, .hold_code = KC_LALT },
-  { .tap_code = KC_QUOT, .hold_code = KC_LCTL },
-  { .tap_code = KC_NUBS, .hold_code = KC_LGUI },
-  { .tap_code = LSFT(KC_NUBS), .hold_code = KC_RGUI },
-  { .tap_code = LSFT(KC_QUOT), .hold_code = KC_RCTL },
-  { .tap_code = LSFT(KC_GRV), .hold_code = KC_RALT },
-};
-
-enum CustomKeycodes {
-  KC_L1 = SAFE_RANGE,
-  KC_L2,
-  KC_L3,
-  KC_L4,
-  KC_L5,
-  KC_L6,
-  KC_L11,
-  KC_L12,
-  KC_L13,
-  KC_L14,
-  KC_L15,
-  KC_L16,
-  KC_LAST,
-};
-*/
-
+#define KEY_11 LALT_T(KC_F11)
+#define KEY_12 LCTL_T(KC_F12)
+#define KEY_13 LGUI_T(KC_F13)
+#define KEY_14 RGUI_T(KC_F14)
+#define KEY_15 RCTL_T(KC_F15)
+#define KEY_16 RALT_T(KC_F16)
 
 enum charybdis_keymap_layers {
     LAYER_BASE = 0,
@@ -356,6 +322,60 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->tap.count) {
         if (record->event.pressed) {
           tap_code16(KC_RCBR);
+        }
+        return false;
+      }
+      break;
+
+    case KEY_11:
+      if (record->tap.count) {
+        if (record->event.pressed) {
+          tap_code16(KC_GRV);
+        }
+        return false;
+      }
+      break;
+
+    case KEY_12:
+      if (record->tap.count) {
+        if (record->event.pressed) {
+          tap_code16(KC_QUOT);
+        }
+        return false;
+      }
+      break;
+
+    case KEY_13:
+      if (record->tap.count) {
+        if (record->event.pressed) {
+          tap_code16(KC_NUBS);
+        }
+        return false;
+      }
+      break;
+
+    case KEY_14:
+      if (record->tap.count) {
+        if (record->event.pressed) {
+          tap_code16(LSFT(KC_NUBS));
+        }
+        return false;
+      }
+      break;
+
+    case KEY_15:
+      if (record->tap.count) {
+        if (record->event.pressed) {
+          tap_code16(LSFT(KC_QUOT));
+        }
+        return false;
+      }
+      break;
+
+    case KEY_16:
+      if (record->tap.count) {
+        if (record->event.pressed) {
+          tap_code16(LSFT(KC_GRV));
         }
         return false;
       }
