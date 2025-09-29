@@ -450,13 +450,13 @@ uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t* record,
 //if (is_flow_tap_key(keycode) && is_flow_tap_key(prev_keycode)) {
         switch (keycode) {
             case MT(MOD_RSFT, KC_SPC):
-              return FLOW_TAP_TERM - 100;  // Short timeout on these keys.
+              return FLOW_TAP_TERM - 200;  // Short timeout on these keys.
             case MT(MOD_LSFT, KC_BSPC):
-              return FLOW_TAP_TERM - 100;  // Short timeout on these keys.
+              return FLOW_TAP_TERM - 200;  // Short timeout on these keys.
             case ENT_NUM:
-              return FLOW_TAP_TERM - 100;  // Short timeout on these keys.
+              return FLOW_TAP_TERM - 200;  // Short timeout on these keys.
             case ESC_SYM:
-              return FLOW_TAP_TERM - 100;  // Short timeout on these keys.
+              return FLOW_TAP_TERM - 200;  // Short timeout on these keys.
 
             default:
               return FLOW_TAP_TERM;  // Longer timeout otherwise.
